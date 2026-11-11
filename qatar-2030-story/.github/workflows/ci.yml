@@ -1,0 +1,28 @@
+name: Test & build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: qatar-2030-story
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: qatar-2030-story/package-lock.json
+      - run: npm ci
+      - run: npm run build:data
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: static-site
+          path: qatar-2030-story/out

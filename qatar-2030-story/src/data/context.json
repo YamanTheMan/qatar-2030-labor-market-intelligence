@@ -1,0 +1,180 @@
+{
+  "_note": "National context — hand-verified public figures used only for scene-setting. NOT outputs of the capstone model. Only facts with verified=true are rendered. Verified on 2026-11-08 against the linked page (or, where noted, an official secondary source).",
+  "facts": [
+    {
+      "id": "population",
+      "value": "3.1 million",
+      "label": "Population of Qatar (2023)",
+      "source": "IMF, 2024 Article IV consultation press release",
+      "url": "https://www.imf.org/en/news/articles/2025/02/11/pr25034-qatar-imf-executive-board-concludes-the-2024-article-iv-consultation",
+      "asOf": "2023 (published Feb 2025)",
+      "verified": true
+    },
+    {
+      "id": "labourForce",
+      "value": "2,240,506",
+      "label": "Labour force aged 15+ (2024)",
+      "detail": "127,477 Qatari · 2,113,029 non-Qatari",
+      "source": "NPC Labour Force Sample Survey 2024, via Gulf Labour Markets and Migration (GLMM)",
+      "url": "https://gulfmigration.grc.net/qatar-economically-active-population-aged-15-years-and-above-by-nationality-qatari-non-qatari-and-activity-sector-2024/",
+      "asOf": "2024",
+      "verified": true
+    },
+    {
+      "id": "qatariLabourForce",
+      "value": "127,477",
+      "label": "Qataris in the labour force (2024)",
+      "source": "NPC Labour Force Sample Survey 2024, via GLMM",
+      "url": "https://gulfmigration.grc.net/qatar-economically-active-population-aged-15-years-and-above-by-nationality-qatari-non-qatari-and-activity-sector-2024/",
+      "asOf": "2024",
+      "verified": true
+    },
+    {
+      "id": "nonQatariShare",
+      "value": "94%",
+      "label": "Share of the labour force that is non-Qatari",
+      "detail": "2,113,029 of 2,240,506 — about 17 non-Qataris for every Qatari",
+      "source": "Computed from NPC Labour Force Sample Survey 2024 (GLMM); the ILO Qatar factsheet (Aug 2025) also reports 94% for 2023",
+      "url": "https://gulfmigration.grc.net/qatar-economically-active-population-aged-15-years-and-above-by-nationality-qatari-non-qatari-and-activity-sector-2024/",
+      "asOf": "2024",
+      "verified": true,
+      "note": "The ILO factsheet also states '23 non-Qataris for every Qatari', which is inconsistent with its own 94% share (94/6 ≈ 16). We use the ratio implied by the 2024 counts (≈17:1)."
+    },
+    {
+      "id": "qatarisPrivate",
+      "value": "10,223",
+      "label": "Qataris working in the private sector (2024)",
+      "detail": "out of 1,775,873 private-sector workers (0.6%)",
+      "source": "NPC Labour Force Sample Survey 2024, via GLMM",
+      "url": "https://gulfmigration.grc.net/qatar-economically-active-population-aged-15-years-and-above-by-nationality-qatari-non-qatari-and-activity-sector-2024/",
+      "asOf": "2024",
+      "verified": true
+    },
+    {
+      "id": "womenLfpr",
+      "value": "43% vs 66%",
+      "label": "Labour-force participation, Qatari women vs Qatari men",
+      "source": "ILO, Qatar Employment Environment Factsheet (citing NPC LFS 2023)",
+      "url": "https://www.ilo.org/sites/default/files/2025-10/Qatar_Employment_Environment_Factsheet_v5.pdf",
+      "asOf": "2023 (published 2025)",
+      "verified": true
+    },
+    {
+      "id": "lng",
+      "value": "77 → 142 Mtpa",
+      "label": "LNG production capacity, today vs by end-2030 (North Field expansion)",
+      "source": "QatarEnergy, What is LNG",
+      "url": "https://www.qatarenergy.qa/en/whoweare/Pages/WhatIsLNG.aspx",
+      "asOf": "accessed Nov 2026",
+      "verified": true
+    },
+    {
+      "id": "nds3Private",
+      "value": "17% → 20%",
+      "label": "NDS3 target: share of Qatari workers in the private and mixed sectors by 2030",
+      "source": "Ministry of Labour strategy launch, Qatar News Agency (4 Nov 2024)",
+      "url": "https://qna.org.qa/en/news-bulletins-details?date=4%2F11%2F2024&id=0088-minister-of-labour%C2%A0launches%C2%A0national-strategy-for-effective-and-highly-productive-workforce-2024---2030",
+      "asOf": "Nov 2024",
+      "verified": true
+    },
+    {
+      "id": "nds3Skilled",
+      "value": ">46%",
+      "label": "NDS3 target: share of the workforce in skilled or highly skilled jobs by 2030",
+      "source": "Invest Qatar, Qatar's Third National Development Strategy: the road ahead",
+      "url": "https://www.invest.qa/en/media-centre/news-and-articles/qatars-third-national-development-strategy-the-road-ahead",
+      "asOf": "2024",
+      "verified": true,
+      "note": "Official NPC page (npc.qa) could not be fetched at build time (TLS error); verified via Invest Qatar and Gulf Times coverage of the NDS3 launch."
+    },
+    {
+      "id": "nds3Stem",
+      "value": "≥18%",
+      "label": "NDS3 target: STEM share of graduates by 2030",
+      "source": "Invest Qatar / Gulf Times coverage of NDS3",
+      "url": "https://www.gulf-times.com/article/675292/qatar/qatar-launches-third-national-development-strategy-2024-2030",
+      "asOf": "Jan 2024",
+      "verified": true,
+      "note": "Secondary coverage; baseline definitions vary between sources."
+    },
+    {
+      "id": "nds3Productivity",
+      "value": "2% a year",
+      "label": "NDS3 target: average annual labour-productivity growth",
+      "source": "Gulf Times coverage of the NDS3 launch",
+      "url": "https://www.gulf-times.com/article/675292/qatar/qatar-launches-third-national-development-strategy-2024-2030",
+      "asOf": "Jan 2024",
+      "verified": true,
+      "note": "Secondary coverage."
+    },
+    {
+      "id": "molStrategy",
+      "value": "16,000",
+      "label": "Qataris to be integrated into the private sector under the Ministry of Labour workforce strategy 2024–2030",
+      "detail": "Three phases: strengthening foundations (2024–25), building capacities (2026–27), achieving transformation (2028–30). High-skilled share of expatriate workforce: 20% → 24%.",
+      "source": "Qatar News Agency (4 Nov 2024)",
+      "url": "https://qna.org.qa/en/news-bulletins-details?date=4%2F11%2F2024&id=0088-minister-of-labour%C2%A0launches%C2%A0national-strategy-for-effective-and-highly-productive-workforce-2024---2030",
+      "asOf": "Nov 2024",
+      "verified": true,
+      "note": "A Feb 2026 QNA release refers to ~15,400 Qataris supporting the 17%→20% goal; we cite the strategy's own 16,000."
+    },
+    {
+      "id": "placed",
+      "value": "7,861",
+      "label": "Qataris (and children of Qatari women) employed in the private sector under the 2024 nationalisation law",
+      "source": "Qatar News Agency (17 Feb 2026)",
+      "url": "https://qna.org.qa/en/news/news-details?date=17%2F02%2F2026&id=under-patronage-of-prime-minister-mol-launches-qatar-nationalisation-award-for-private-sector",
+      "asOf": "Feb 2026",
+      "verified": true,
+      "note": "The release refers to 'the Private Sector Nationalisation Law in 2024' without a law number, so we do not cite one."
+    },
+    {
+      "id": "digitalAgenda",
+      "value": "26,000",
+      "label": "New ICT-sector jobs targeted by Digital Agenda 2030, alongside ~QAR 40bn of economic impact",
+      "source": "Ministry of Communications and IT, Digital Agenda 2030 launch (Feb 2024)",
+      "url": "https://mcit.gov.qa/en/node/21057",
+      "asOf": "Feb 2024",
+      "verified": true
+    },
+    {
+      "id": "wefSkills",
+      "value": "Top 3",
+      "label": "AI & big data, networks & cybersecurity, and technological literacy are the fastest-growing skills to 2030 (WEF Future of Jobs 2025)",
+      "source": "World Economic Forum, Future of Jobs Report 2025",
+      "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/",
+      "asOf": "Jan 2025",
+      "verified": true,
+      "note": "Ranking confirmed via multiple secondary reports of the WEF findings; the MENA-specific percentages in the original brief could not be verified and are not shown."
+    },
+    {
+      "id": "qfIlo",
+      "value": "Dec 2025",
+      "label": "Qatar Foundation and the ILO sign a partnership on policy research including skills mismatches and national talent retention",
+      "source": "ILO news release (4 Dec 2025)",
+      "url": "https://www.ilo.org/resource/news/qatar-foundation-and-international-labour-organization-partner-help-shape",
+      "asOf": "Dec 2025",
+      "verified": true
+    },
+    {
+      "id": "nonHydroShare",
+      "value": "~64%",
+      "label": "Non-hydrocarbon share of GDP (2025 projection)",
+      "source": "IMF Article IV staff report",
+      "url": "https://www.elibrary.imf.org/view/journals/002/2025/047/article-A001-en.xml",
+      "asOf": "2025",
+      "verified": false,
+      "note": "Not rendered: the staff report was not reachable at build time and the press release gives only growth rates."
+    },
+    {
+      "id": "publicPreference",
+      "value": "~70%",
+      "label": "Young Qataris who say they prefer public-sector work",
+      "source": "Survey figure cited in the project brief",
+      "url": "https://qcdc.org.qa/news/qcdc-releases-2025-annual-report/",
+      "asOf": "2025",
+      "verified": false,
+      "note": "Not rendered as a number: no primary survey located. The story states the finding qualitatively."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# dependencies and build output
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+qatar-2030-story/public/vendor/
+
+# local tooling
+.claude/
+.DS_Store
+__pycache__/
+.venv/

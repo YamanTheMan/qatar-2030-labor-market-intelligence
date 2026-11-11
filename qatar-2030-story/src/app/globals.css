@@ -1,0 +1,684 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens. One set of roles, two themes. Light is the default;
+   dark applies only while the dashboard sets data-theme="dark".
+   ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+  --surface-3: #eef0f3;
+  --line: #e4e7ec;
+  --line-strong: #cdd2da;
+  --text: #14171f;
+  --text-2: #475467;
+  --text-3: #5f6b7c;
+  --accent: #8a1538;
+  --accent-hover: #6f102d;
+  --accent-soft: #f9ecf0;
+  --accent-text: #8a1538;
+  --on-accent: #ffffff;
+  --slate: #4f7187;
+  --slate-soft: #dce6ec;
+  --gold: #c9a227;
+  --r-recruit: #4c5fd5;
+  --r-build: #00927b;
+  --r-reskill: #9558b2;
+  --gold-ink: #7a5e0b;
+  --gold-soft: #f6edcf;
+  --invert: #14171f;
+  --on-invert: #ffffff;
+
+  /* Shortfall scale: diverging, grey midpoint. c = market already covers it. */
+  --s-c2: #6a98b9;
+  --s-c1: #adc9db;
+  --s-0: #dde0e4;
+  --s-1: #ecbcc4;
+  --s-2: #db7f91;
+  --s-3: #b93958;
+  --s-4: #760f2c;
+  --s-c2-ink: #14171f;
+  --s-c1-ink: #14171f;
+  --s-0-ink: #14171f;
+  --s-1-ink: #14171f;
+  --s-2-ink: #14171f;
+  --s-3-ink: #ffffff;
+  --s-4-ink: #ffffff;
+
+  --grid: #e9ecf0;
+  --axis: #c9ced6;
+  --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.05);
+  --shadow-md: 0 4px 14px rgb(16 24 40 / 0.08), 0 1px 2px rgb(16 24 40 / 0.04);
+  --shadow-lg: 0 16px 40px rgb(16 24 40 / 0.16), 0 2px 6px rgb(16 24 40 / 0.06);
+  --ring: 0 0 0 3px rgb(138 21 56 / 0.18);
+
+  --f-sans: var(--font-inter), var(--font-plex-arabic), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-display: var(--font-inter), var(--font-plex-arabic), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-arabic: var(--font-plex-arabic), "Noto Naskh Arabic", "Geeza Pro", sans-serif;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0e14;
+  --surface: #131722;
+  --surface-2: #181d2a;
+  --surface-3: #1f2534;
+  --line: #252b3a;
+  --line-strong: #364056;
+  --text: #f2f4f8;
+  --text-2: #b4bccb;
+  --text-3: #8a94a8;
+  --accent: #a82550;
+  --accent-hover: #c02d5e;
+  --accent-soft: #3a1524;
+  --accent-text: #f07a9c;
+  --on-accent: #ffffff;
+  --slate: #689cbe;
+  --slate-soft: #1c2b38;
+  --gold: #e2bc4a;
+  --r-recruit: #6878e3;
+  --r-build: #109c87;
+  --r-reskill: #a26cc0;
+  --gold-ink: #e9cb6c;
+  --gold-soft: #33290c;
+  --invert: #f2f4f8;
+  --on-invert: #0b0e14;
+
+  --s-c2: #4a7491;
+  --s-c1: #344e61;
+  --s-0: #33373d;
+  --s-1: #693540;
+  --s-2: #a3455b;
+  --s-3: #e05a7f;
+  --s-4: #fd97b1;
+  --s-c2-ink: #ffffff;
+  --s-c1-ink: #ffffff;
+  --s-0-ink: #ffffff;
+  --s-1-ink: #ffffff;
+  --s-2-ink: #ffffff;
+  --s-3-ink: #0b0e14;
+  --s-4-ink: #0b0e14;
+
+  --grid: #212736;
+  --axis: #364056;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 6px 18px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 18px 48px rgb(0 0 0 / 0.6), 0 2px 6px rgb(0 0 0 / 0.4);
+  --ring: 0 0 0 3px rgb(240 122 156 / 0.28);
+}
+
+@theme inline {
+  /* dashboard roles */
+  --color-canvas: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--text);
+  --color-fg-2: var(--text-2);
+  --color-fg-3: var(--text-3);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-text);
+  --color-invert: var(--invert);
+  --color-on-invert: var(--on-invert);
+
+  /* names used by the earlier pages, mapped onto the same roles */
+  --color-paper: var(--bg);
+  --color-paper-2: var(--surface-3);
+  --color-card: var(--surface);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-muted: var(--text-3);
+  --color-rule: var(--line);
+  --color-maroon: var(--accent-text);
+  --color-maroon-deep: var(--accent-hover);
+  --color-maroon-soft: var(--accent-soft);
+  --color-slate: var(--slate);
+  --color-slate-soft: var(--slate-soft);
+  --color-gold: var(--gold);
+  --color-gold-ink: var(--gold-ink);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-display: var(--f-display);
+  --font-sans: var(--f-sans);
+  --font-arabic: var(--f-arabic);
+}
+
+@theme {
+  --breakpoint-xs: 420px;
+  --breakpoint-3xl: 1680px;
+}
+
+/* The scroll story keeps its serif headings. */
+.story-scope {
+  --f-display: var(--font-fraunces), "Noto Naskh Arabic", Georgia, serif;
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--text);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 72px;
+  }
+  body {
+    font-family: var(--f-sans);
+    font-feature-settings: "ss01", "cv11";
+    background: var(--bg);
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--accent-soft);
+  }
+  a {
+    text-underline-offset: 3px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 768px) {
+    .wrap {
+      padding-inline: 32px;
+    }
+  }
+  .kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent-text);
+  }
+  .display {
+    font-family: var(--f-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+  }
+  .prose-story p {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--text-2);
+  }
+  .prose-story p + p {
+    margin-top: 1em;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-2);
+    transition: background 120ms, border-color 120ms, color 120ms;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--invert);
+    border-color: var(--invert);
+    color: var(--on-invert);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: background 150ms, color 150ms, transform 150ms;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+  }
+  .btn-ghost {
+    border: 1px solid var(--text);
+    color: var(--text);
+  }
+  .btn-ghost:hover {
+    background: var(--invert);
+    color: var(--on-invert);
+  }
+  .link {
+    color: var(--accent-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+  .link:hover {
+    text-decoration-thickness: 2px;
+  }
+  .hatch {
+    background-image: repeating-linear-gradient(135deg, var(--line) 0 2px, transparent 2px 7px);
+  }
+}
+
+/* Compact charts inside the mobile pinned panel */
+@media (max-width: 1023px) {
+  .scrolly-graphic figcaption {
+    margin-bottom: 0.5rem;
+  }
+  .scrolly-graphic figcaption h3 {
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+  .scrolly-graphic figcaption > p {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .scrolly-graphic figcaption > div {
+    margin-top: 0.4rem;
+    font-size: 0.7rem;
+  }
+  .scrolly-graphic figure > footer {
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    font-size: 0.65rem;
+    flex-wrap: nowrap;
+  }
+  .scrolly-graphic figure > footer > span {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Chart text */
+.axis text,
+.chart-label {
+  font-family: var(--f-sans);
+  fill: var(--text-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print: used by /brief and as a sane default elsewhere */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-break {
+    break-before: page;
+  }
+  .avoid-break {
+    break-inside: avoid;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Dashboard components
+   ------------------------------------------------------------------ */
+@layer components {
+  .dash {
+    width: 100%;
+    max-width: 1760px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 768px) {
+    .dash {
+      padding-inline: 24px;
+    }
+  }
+  @media (min-width: 1680px) {
+    .dash {
+      padding-inline: 32px;
+    }
+  }
+
+  .d-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .d-eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-3);
+  }
+  .d-h {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .d-sub {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--text-3);
+  }
+
+  /* segmented control */
+  .seg {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 10px;
+    background: var(--surface-3);
+  }
+  .seg > button {
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text-2);
+    white-space: nowrap;
+    transition: background 120ms, color 120ms, box-shadow 120ms;
+  }
+  .seg > button:hover {
+    color: var(--text);
+  }
+  .seg > button[aria-pressed="true"] {
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm), 0 0 0 1px var(--line);
+  }
+  .seg-sm > button {
+    padding: 4px 9px;
+    font-size: 0.75rem;
+  }
+
+  .d-field,
+  .d-btn {
+    height: 36px;
+    border-radius: 9px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.8125rem;
+    transition: border-color 120ms, background 120ms, color 120ms;
+  }
+  .d-field {
+    padding-inline: 12px;
+  }
+  .d-field::placeholder {
+    color: var(--text-3);
+  }
+  .d-field:hover,
+  .d-btn:hover {
+    border-color: var(--text-3);
+  }
+  .d-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding-inline: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .d-btn:hover {
+    background: var(--surface-2);
+  }
+  .d-btn[aria-pressed="true"] {
+    background: var(--invert);
+    border-color: var(--invert);
+    color: var(--on-invert);
+  }
+  .d-btn-quiet {
+    border-color: transparent;
+    background: transparent;
+    color: var(--text-2);
+  }
+  .d-btn-quiet:hover {
+    border-color: transparent;
+    background: var(--surface-3);
+    color: var(--text);
+  }
+  .d-btn-sm {
+    height: 30px;
+    padding-inline: 9px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+  }
+  .d-icon {
+    width: 36px;
+    padding: 0;
+  }
+  .d-btn-sm.d-icon {
+    width: 30px;
+  }
+
+  .d-tip {
+    position: fixed;
+    z-index: 80;
+    pointer-events: none;
+    max-width: 300px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+  .d-hatch {
+    background-image: repeating-linear-gradient(135deg, var(--line-strong) 0 1px, transparent 1px 6px);
+  }
+  .d-link {
+    color: var(--accent-text);
+    font-weight: 600;
+  }
+  .d-link:hover {
+    text-decoration: underline;
+  }
+  .d-num {
+    font-variant-numeric: tabular-nums;
+  }
+  .d-badge-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 999px;
+    background: var(--gold-soft);
+    color: var(--gold-ink);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .d-row-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+    transition: background 100ms;
+  }
+  .d-row-btn:hover,
+  .d-row-btn[data-active="true"] {
+    background: var(--surface-2);
+  }
+
+  /* map pins */
+  .hub-pin {
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1px rgb(16 24 40 / 0.22), var(--shadow-md);
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 140ms, opacity 140ms;
+  }
+  .hub-pin:hover,
+  .hub-pin[data-active="true"] {
+    transform: scale(1.1);
+  }
+  .hub-pin[aria-pressed="true"] {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 2px var(--text), 0 0 0 6px color-mix(in srgb, var(--text) 16%, transparent), var(--shadow-lg);
+  }
+  .hub-pin[data-cluster="true"] {
+    box-shadow: 0 0 0 1px rgb(16 24 40 / 0.22), 0 0 0 6px color-mix(in srgb, var(--pin, var(--text-3)) 30%, transparent), var(--shadow-md);
+  }
+  .hub-pin[data-empty="true"] {
+    background: var(--surface-3) !important;
+    color: var(--text-3) !important;
+  }
+  .dash-pin-in {
+    animation: pin-in 180ms ease-out;
+  }
+  .hub-label {
+    position: absolute;
+    animation: pin-in 180ms ease-out;
+    pointer-events: none;
+    white-space: nowrap;
+    border-radius: 7px;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    box-shadow: var(--shadow-sm);
+    padding: 3px 7px;
+    line-height: 1.25;
+  }
+  .hub-label b {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .hub-label span {
+    display: block;
+    font-size: 10.5px;
+    color: var(--text-3);
+  }
+}
+
+/* MapLibre: fit the map into the dashboard's own chrome */
+.maplibregl-map {
+  font: inherit;
+  background: transparent;
+}
+.maplibregl-canvas:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: -2px;
+}
+.maplibregl-marker {
+  will-change: transform;
+}
+.maplibregl-cooperative-gesture-screen {
+  background: color-mix(in srgb, var(--invert) 55%, transparent);
+  color: var(--on-invert);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  z-index: 20;
+}
+
+@keyframes dash-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.dash-in {
+  animation: dash-in 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes sheet-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+/* no end frame: the pin fades up to whatever opacity it has (dimmed pins stay dimmed) */
+@keyframes pin-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* skill panel */
+.dash-sheet {
+  animation: sheet-in 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  color: var(--text);
+}
+.dash-overlay {
+  animation: fade-in 180ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dash-sheet,
+  .dash-overlay {
+    animation: none;
+  }
+}
