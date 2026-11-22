@@ -1,5 +1,6 @@
 "use client";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { withBase } from "@/lib/basePath";
 import type { Map as MlMap, MapSourceDataEvent, Marker as MlMarker } from "maplibre-gl";
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
@@ -118,7 +119,7 @@ export function QatarMap({
       try {
         const ml = await import("maplibre-gl");
         if (dead || !holder.current) return;
-        ml.setWorkerUrl("/vendor/maplibre-gl-worker.mjs");
+        ml.setWorkerUrl(withBase("/vendor/maplibre-gl-worker.mjs"));
         const m = new ml.Map({
           container: holder.current,
           style: buildStyle(themeRef.current, false),

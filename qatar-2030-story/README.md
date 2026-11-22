@@ -1,5 +1,7 @@
 # Qatar 2030 Skills Intelligence
 
+**Live:** https://yamantheman.github.io/qatar-2030-labor-market-intelligence/ (deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`)
+
 An executive dashboard that compares **what Qatar's 2030 strategy documents say the economy will need** with **what employers in Qatar hire for today**, across **5 possible futures**, **8 sectors** and **17 economic hubs** on an interactive map of Qatar.
 
 It is the redesign of the *Qatar 2030 Labor Market Intelligence* Streamlit dashboard. It was built as a **CMU Tepper MSBA Capstone (2025)** for **Qatar Foundation's Higher Education Division, Qatar Human Capital Manara**.

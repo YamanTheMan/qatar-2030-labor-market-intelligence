@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_PATH } from "@/lib/basePath";
 import { useEffect, useSyncExternalStore } from "react";
 
 export type Theme = "light" | "dark";
@@ -64,4 +65,4 @@ export function useDashboardTheme() {
 }
 
 /** Runs before first paint so a dark-theme reader never sees a light flash. */
-export const THEME_BOOT_SCRIPT = `try{if(location.pathname==="/"&&localStorage.getItem("${KEY}")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}`;
+export const THEME_BOOT_SCRIPT = `try{if(location.pathname===(${JSON.stringify(BASE_PATH)}+"/")&&localStorage.getItem("${KEY}")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}`;

@@ -1,6 +1,8 @@
 # qatar-dashboard
 Qatar Foundation job market analysis
 
+> **Live platform:** https://yamantheman.github.io/qatar-2030-labor-market-intelligence/
+>
 > **This repository has two parts.**
 > - `app.py` + `data/`: the original Streamlit dashboard (described below).
 > - [`qatar-2030-story/`](qatar-2030-story/): the redesigned demand-first platform (Next.js, static). It has an interactive map, a sector investment briefing and evidence for every skill. See its [README](qatar-2030-story/README.md) and [DECISIONS.md](qatar-2030-story/DECISIONS.md).

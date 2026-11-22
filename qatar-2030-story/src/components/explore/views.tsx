@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { withBase } from "@/lib/basePath";
 import { useMemo, useState } from "react";
 import { C } from "@/lib/colors";
 import { gaps, sourceById, sources, summary } from "@/lib/data";
@@ -528,7 +529,7 @@ export function TablesView({ sp, set, rows }: { sp: URLSearchParams; set: SetFn;
         <button type="button" className="btn btn-primary !py-1.5 !text-sm" onClick={() => downloadCsv(`${t}-view.csv`, data)}>
           Download this view (CSV)
         </button>
-        <a href={`/data/${TABLES[t].file}`} download className="link text-sm">
+        <a href={withBase(`/data/${TABLES[t].file}`)} download className="link text-sm">
           Original file: {TABLES[t].file}
         </a>
       </div>
